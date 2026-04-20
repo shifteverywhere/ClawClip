@@ -54,18 +54,6 @@ git clone https://github.com/shifteverywhere/ClawClip.git
 cd ClawClip
 ```
 
-### 2 — Generate icons
-
-The repository ships without compiled icons. Run the generator once (Python 3 standard library only):
-
-```bash
-python3 create-icons.py
-```
-
-This creates solid-colour placeholder PNGs in `icons/`. Replace them with real artwork before publishing.
-
----
-
 ### Firefox
 
 `manifest.json` is pre-configured for Firefox.
@@ -164,8 +152,8 @@ Click the **moon / sun icon** in the upper-right corner of the popup or options 
 ClawClip/
 ├── manifest.json            ← Firefox (background.scripts)
 ├── manifest.chrome.json     ← Chrome / Edge (background.service_worker)
-├── create-icons.py          ← generates placeholder PNG icons
 ├── icons/
+│   ├── original.png         ← source artwork
 │   ├── icon16.png
 │   ├── icon32.png
 │   ├── icon48.png
