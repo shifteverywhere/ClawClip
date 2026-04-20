@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ClawClip</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+
+  <header>
+    <span class="logo">ClawClip</span>
+    <button id="btn-theme" class="theme-toggle" aria-label="Toggle theme">
+      <!-- Moon: visible in light mode (click → go dark) -->
+      <svg class="icon icon-moon" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+      <!-- Sun: visible in dark mode (click → go light) -->
+      <svg class="icon icon-sun" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+        <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+      </svg>
+    </button>
+  </header>
+
+  <main>
+    <!-- No endpoints configured -->
+    <div id="state-empty" class="state hidden">
+      <p class="hint">No endpoints configured.</p>
+      <button id="btn-setup" class="btn btn-primary">Set up endpoints</button>
+    </div>
+
+    <!-- Send form -->
+    <div id="state-form" class="state hidden">
+      <div class="field">
+        <label for="sel-endpoint">Endpoint</label>
+        <select id="sel-endpoint"></select>
+      </div>
+      <div class="field">
+        <label for="inp-note">Note <span class="label-opt">(optional)</span></label>
+        <textarea id="inp-note" rows="2" placeholder="Add context…"></textarea>
+      </div>
+      <div id="ctx-preview" class="ctx-preview" title=""></div>
+      <button id="btn-send" class="btn btn-primary">Send</button>
+    </div>
+
+    <!-- Sending -->
+    <div id="state-sending" class="state hidden">
+      <p class="center-msg">Sending…</p>
+    </div>
+
+    <!-- Result -->
+    <div id="state-result" class="state hidden">
+      <div id="result-icon" class="result-icon"></div>
+      <p id="result-msg" class="result-msg"></p>
+      <button id="btn-again" class="btn btn-secondary">Send again</button>
+    </div>
+  </main>
+
+  <footer>
+    <button id="btn-options" class="link-btn">Manage endpoints</button>
+  </footer>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

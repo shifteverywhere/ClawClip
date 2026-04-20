@@ -1,0 +1,227 @@
+:root {
+  --accent:       #7c3aed;
+  --accent-hover: #6d28d9;
+  --success:      #16a34a;
+  --error:        #dc2626;
+  --bg:           #ffffff;
+  --surface:      #f9fafb;
+  --border:       #e5e7eb;
+  --text:         #111827;
+  --muted:        #6b7280;
+  --radius:       6px;
+}
+
+[data-theme="dark"] {
+  --accent:       #a78bfa;
+  --accent-hover: #c4b5fd;
+  --success:      #4ade80;
+  --error:        #f87171;
+  --bg:           #18181f;
+  --surface:      #1f1f2c;
+  --border:       #2d2d40;
+  --text:         #e2e8f0;
+  --muted:        #8892a4;
+  color-scheme: dark;
+}
+
+/* Smooth transition only when the user explicitly toggles — applied via JS */
+.theme-transition,
+.theme-transition * {
+  transition: background-color 0.2s ease, color 0.2s ease,
+              border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  color: var(--text);
+  background: var(--bg);
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Header ── */
+header {
+  padding: 11px 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -0.3px;
+}
+
+/* ── Theme toggle ── */
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  color: var(--muted);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+}
+.theme-toggle:hover {
+  background: var(--surface);
+  color: var(--text);
+}
+
+/* Moon shown in light mode, sun shown in dark mode */
+.icon-moon { display: block; }
+.icon-sun  { display: none;  }
+[data-theme="dark"] .icon-moon { display: none;  }
+[data-theme="dark"] .icon-sun  { display: block; }
+
+/* ── Main ── */
+main {
+  flex: 1;
+  padding: 16px;
+}
+
+.hidden { display: none !important; }
+
+/* ── Fields ── */
+.field { margin-bottom: 12px; }
+
+.field label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.label-opt {
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+select,
+textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 7px 10px;
+  font-size: 13px;
+  font-family: inherit;
+  color: var(--text);
+  background: var(--bg);
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+select:focus,
+textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.12);
+}
+
+[data-theme="dark"] select:focus,
+[data-theme="dark"] textarea:focus {
+  box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.2);
+}
+
+textarea { resize: vertical; }
+
+/* ── Context preview ── */
+.ctx-preview {
+  font-size: 11px;
+  color: var(--muted);
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 5px 8px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-height: 24px;
+}
+
+/* ── Buttons ── */
+.btn {
+  display: block;
+  width: 100%;
+  padding: 9px 16px;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+.btn-primary:hover { background: var(--accent-hover); }
+
+.btn-secondary {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.btn-secondary:hover { background: var(--border); }
+
+.link-btn {
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 12px;
+  color: var(--muted);
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+.link-btn:hover { color: var(--accent); }
+
+/* ── State: empty ── */
+#state-empty { text-align: center; padding: 20px 0; }
+.hint { color: var(--muted); margin-bottom: 12px; }
+
+/* ── State: sending ── */
+.center-msg {
+  text-align: center;
+  color: var(--muted);
+  padding: 28px 0;
+}
+
+/* ── State: result ── */
+#state-result { text-align: center; padding: 20px 0; }
+
+.result-icon {
+  font-size: 40px;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.result-icon.success { color: var(--success); }
+.result-icon.error   { color: var(--error); }
+
+.result-msg {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 16px;
+  word-break: break-word;
+}
+
+/* ── Footer ── */
+footer {
+  padding: 8px 16px;
+  border-top: 1px solid var(--border);
+  text-align: right;
+}

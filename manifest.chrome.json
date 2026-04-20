@@ -1,0 +1,45 @@
+{
+  "manifest_version": 3,
+  "name": "ClawClip",
+  "version": "0.1.0",
+  "description": "Capture browser context and send to webhook endpoints for AI workflows.",
+
+  "icons": {
+    "16":  "icons/icon16.png",
+    "32":  "icons/icon32.png",
+    "48":  "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+
+  "background": {
+    "service_worker": "src/background/service-worker.js",
+    "type": "module"
+  },
+
+  "action": {
+    "default_popup": "src/popup/popup.html",
+    "default_title": "ClawClip",
+    "default_icon": {
+      "16":  "icons/icon16.png",
+      "32":  "icons/icon32.png",
+      "48":  "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+
+  "options_ui": {
+    "page": "src/options/options.html",
+    "open_in_tab": true
+  },
+
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "contextMenus"
+  ],
+
+  "host_permissions": [
+    "*://*/*"
+  ]
+}
